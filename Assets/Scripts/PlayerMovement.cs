@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;
 
     public Rigidbody2D rb;
-
+    public Animator animator;
     private Vector2 movement;
 
     // Update is called once per frame
@@ -21,6 +21,10 @@ public class PlayerMovement : MonoBehaviour
 
         // Combined normalized movement vector
         movement = new Vector2(movement.x, movement.y).normalized;
+
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
+        animator.SetFloat("Speed", movement.sqrMagnitude);
     }
 
     private void FixedUpdate()
