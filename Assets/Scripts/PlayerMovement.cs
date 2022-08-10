@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
+    private float slowSpeed = 3f;
+    private float regularSpeed = 5f;
 
     public Rigidbody2D rb;
     public Animator animator;
@@ -35,10 +37,29 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    void OnCollisionEnter2D(Collision2D collision){
+    void OnTriggerEnter2D(Collider2D collision){
         Debug.Log("trigger test");
-        
+        if(collision.gameObject.name == "Water"){
+            Debug.Log(collision.gameObject.name);
+            moveSpeed = slowSpeed;
+        }
     }
 
+    void OnTriggerStay2D(Collider2D collision){
+        Debug.Log("Stay test");
+        if(collision.gameObject.name == "Water"){
+            Debug.Log(collision.gameObject.name);
+            moveSpeed = slowSpeed;
+        }
+    }
+
+
+    void OnTriggerExit2D(Collider2D collision){
+        Debug.Log("trigger test");
+        if(collision.gameObject.name == "Water"){
+            Debug.Log(collision.gameObject.name);
+            moveSpeed = regularSpeed;
+        }
+    }
     
 }
