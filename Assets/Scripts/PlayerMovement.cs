@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    void onCollisionEnter2D(Collision2D collision){
+    void OnCollisionEnter2D(Collision2D collision){
         Debug.Log("trigger test");
         
     }
