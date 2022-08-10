@@ -38,7 +38,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collision){
-        Debug.Log("trigger test");
         if(collision.gameObject.name == "Water"){
             Debug.Log(collision.gameObject.name);
             moveSpeed = slowSpeed;
@@ -46,7 +45,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void OnTriggerStay2D(Collider2D collision){
-        Debug.Log("Stay test");
         if(collision.gameObject.name == "Water"){
             Debug.Log(collision.gameObject.name);
             moveSpeed = slowSpeed;
@@ -55,8 +53,29 @@ public class PlayerMovement : MonoBehaviour
 
 
     void OnTriggerExit2D(Collider2D collision){
-        Debug.Log("trigger test");
         if(collision.gameObject.name == "Water"){
+            Debug.Log(collision.gameObject.name);
+            moveSpeed = regularSpeed;
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision){
+        if(collision.gameObject.name == ("Speakers")){
+            Debug.Log(collision.gameObject.name);
+            moveSpeed = slowSpeed;
+        }
+    }
+
+    void OnCollisionStay2D(Collision2D  collision){
+        if(collision.gameObject.CompareTag("Speakers")){
+            Debug.Log(collision.gameObject.name);
+            moveSpeed = slowSpeed;
+        }
+    }
+
+
+    void OnCollisionExit2D(Collision2D  collision){
+        if(collision.gameObject.CompareTag("Speakers")){
             Debug.Log(collision.gameObject.name);
             moveSpeed = regularSpeed;
         }
