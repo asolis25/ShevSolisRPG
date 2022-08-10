@@ -25,11 +25,20 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
+  
     }
 
     private void FixedUpdate()
     {
         //  Moves player according to given inputs
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+
     }
+
+    void onCollisionEnter2D(Collision2D collision){
+        Debug.Log("trigger test");
+        
+    }
+
+    
 }
